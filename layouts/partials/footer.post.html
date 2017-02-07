@@ -1,0 +1,22 @@
+  </section>
+  {{ partial "tags.html" . }}
+
+  {{ if (not (.Scratch.Get "isListing")) }}
+    {{ if (or .NextInSection .PrevInSection) }}
+      <section id="prev-next">
+        {{ if .PrevInSection }}
+          <span aria-hidden="true">&lsaquo;&nbsp;</span>
+          <a class="prev" href="{{ .PrevInSection.Permalink }}" aria-label="{{ .PrevInSection.Title }}">
+            <span>{{ .PrevInSection.Title }}</span>
+          </a>
+        {{ end }}
+        {{ if .NextInSection }}
+          <a class="next" href="{{ .NextInSection.Permalink }}" aria-label="{{ .NextInSection.Title }}">
+            <span>{{ .NextInSection.Title }}</span>
+          </a>
+          <span aria-hidden="true">&nbsp;&rsaquo;</span>
+        {{ end }}
+      </section>
+    {{ end }}
+  {{ end }}
+</article>

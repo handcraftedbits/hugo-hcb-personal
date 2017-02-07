@@ -1,0 +1,14 @@
+{{ define "title" }}
+  Posts | {{ .Site.Params.owner.name }}
+{{ end }}
+
+{{ define "body" }}
+  {{ .Scratch.Set "paginator" (.Paginate (where .Data.Pages "Type" "post")) }}
+
+  {{ partial "header.page.html" . }}
+    {{ range (.Scratch.Get "paginator").Pages }}
+      {{ .Render "summary" }}
+    {{ end }}
+    {{ partial "pager.html" . }}
+  {{ partial "footer.page.html" . }}
+{{ end }}

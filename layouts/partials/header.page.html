@@ -1,0 +1,34 @@
+<header class="pure-u-1 pure-u-lg-1-5">
+  <section id="logo-and-name">
+    <svg>
+      <use xlink:href="/image/sprites.svg#logo"></use>
+    </svg>
+    <h1>{{ .Site.Params.owner.name }}</h1>
+  </section>
+  <section id="links">
+    <nav role="navigation" id="social" aria-label="Social Links">
+      <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#117;&#114;&#116;&#105;&#115;&#115;&#064;&#099;&#117;&#114;&#116;&#105;&#115;&#115;&#104;&#111;&#119;&#097;&#114;&#100;&#046;&#099;&#111;&#109;" class="fullsize">
+        <svg>
+          <use xlink:href="/image/sprites.svg#email-icon"></use>
+        </svg>
+      </a>
+      <a href="{{ .Site.Params.owner.linkedin }}" target="_blank" rel="noopener noreferrer">
+        <svg>
+          <use xlink:href="/image/sprites.svg#linkedin-icon"></use>
+        </svg>
+      </a>
+      <a href="https://github.com/{{ .Site.Params.owner.github }}" target="_blank" rel="noopener noreferrer">
+        <svg>
+          <use xlink:href="/image/sprites.svg#github-icon"></use>
+        </svg>
+      </a>
+    </nav>
+    <nav role="navigation" id="main" aria-label="Pages">
+      <a href="{{ "/" | relURL }}">Home</a>
+      <a href="{{ "/about" | relURL }}">About</a>
+      <a href="{{ "/projects" | relURL }}">Projects</a>
+    </nav>
+  </section>
+</header>
+
+<main class="pure-u-1 pure-u-lg-4-5">

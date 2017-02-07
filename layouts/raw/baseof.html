@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+  <head>
+    <title>{{ .Title }}</title>
+
+    <meta charset="UTF-8" />
+
+    <!-- Stylesheets -->
+    {{ if (.Params.style) }}
+      <link rel="stylesheet" type="text/css" href="/style/{{ .Params.style }}" />
+    {{ end }}
+  </head>
+  <body>
+    {{ block "body" . }}
+    {{ end }}
+  </body>
+</html>

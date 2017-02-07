@@ -1,0 +1,13 @@
+{{ define "title" }}
+  {{ .Title }} | {{ .Site.Params.owner.name }}
+{{ end }}
+
+{{ define "body" }}
+  {{ .Scratch.Set "isListing" false }}
+
+  {{ partial "header.page.html" . }}
+  {{ partial "header.post.html" . }}
+    {{ .Content }}
+  {{ partial "footer.post.html" . }}
+  {{ partial "footer.page.html" . }}
+{{ end }}
