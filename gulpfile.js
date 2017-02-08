@@ -201,8 +201,12 @@ gulp.task("create-svg-sprite", function() {
 gulp.task("minify-css", gulp.series("concat-css", function() {
      return gulp.src(config.dir.output.style("style.css"))
           .pipe(cleanCss({
-               keepSpecialComments: 0,
-               mediaMerging: true
+               level: {
+                    1: {
+                         specialComments: "none"
+                    },
+                    2: { }
+               }
           }))
           .pipe(rev())
           .pipe(gulp.dest(config.dir.output.style()))
