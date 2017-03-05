@@ -1,9 +1,11 @@
 {{ $repos := getJSON "https://api.github.com/users/" .Site.Params.owner.github "/repos?sort=full_name" }}
 {{ range $repos }}
-  <h2>
-    <a href="{{ .html_url }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a>
-  </h2>
-  <p>
-    {{ .description }}.
-  </p>
+  {{ if (not .fork) }}
+    <h2>
+      <a href="{{ .html_url }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a>
+    </h2>
+    <p>
+      {{ .description }}.
+    </p>
+  {{ end }}
 {{ end }}
