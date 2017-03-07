@@ -1,8 +1,8 @@
 {
-  "name": "site",
-  "description": "Simple site",
+  "name": "hugo-hcb-personal",
+  "description": "HandcraftedBits Personal Site Theme for Hugo (Bower Components)",
   "main": "",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "homepage": "",
   "ignore": [
     "**/.*",
