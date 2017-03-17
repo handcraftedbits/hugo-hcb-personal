@@ -199,7 +199,7 @@ gulp.task("create-svg-sprite", function() {
 });
 
 gulp.task("minify-css", gulp.series("concat-css", function() {
-     return gulp.src(config.dir.output.style("style.css"))
+     return gulp.src([ config.dir.output.style("resume.css"), config.dir.output.style("style.css") ])
           .pipe(cleanCss({
                level: {
                     1: {
@@ -213,6 +213,7 @@ gulp.task("minify-css", gulp.series("concat-css", function() {
           .pipe(rev.manifest("rev_manifest_css.json"))
           .pipe(gulp.dest(dataDir()))
           .on("end", function() {
+               rimraf.sync(config.dir.output.style("resume.css"));
                rimraf.sync(config.dir.output.style("style.css"));
           });
 }));
