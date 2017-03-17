@@ -28,7 +28,11 @@
     <link rel="apple-touch-icon" href="/image/favicon/apple-touch-icon-180x180.png" type="image/png" sizes="180x180" /> 
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" type="text/css" href="/style/{{ index .Site.Data.rev_manifest_css "style.css" }}" />
+    {{ if (.Params.style) }}
+      <link rel="stylesheet" type="text/css" href="/style/{{ index .Site.Data.rev_manifest_css .Params.style }}" />
+    {{ else }}
+      <link rel="stylesheet" type="text/css" href="/style/{{ index .Site.Data.rev_manifest_css "style.css" }}" />
+    {{ end }}
 
     <!-- Javascript -->
     <script type="text/javascript" src="/script/{{ index .Site.Data.rev_manifest_js "all-min.js" }}"></script>
