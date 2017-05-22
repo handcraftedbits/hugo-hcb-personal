@@ -221,7 +221,9 @@
               <br />
             {{ end }}
             <p {{ if (eq $resume._meta.public true) }} class="redacted" {{ end }}>
-              {{ $ref._title | default (print "references[" $i "]._title") | safeHTML }}
+              {{ if isset $ref "_title" }}
+                {{ $ref._title | safeHTML }}
+              {{ end }}
             </p>
             <p>{{ $ref.reference | default (print "references[" $i "].reference") }}</p>
           </div>
