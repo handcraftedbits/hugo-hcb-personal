@@ -1,7 +1,7 @@
 {{ if .Params.tags }}
   <section class='tags {{ if (.Scratch.Get "isListing") }} summary {{ end }}'>
     {{ range sort .Params.tags }}
-      <a href="{{ "/tags/" | relURL }}{{ . | urlize }}">{{ . }}</a>
+      <a href="{{ "/tags/" | relURL }}{{ . | urlize }}.html">{{ . }}</a>
     {{ end }}
   </section>
 {{ end }}
