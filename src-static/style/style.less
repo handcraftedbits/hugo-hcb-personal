@@ -340,7 +340,7 @@ nav {
 
                .size(padding-right, @size-padding-right);
 
-               &:hover > svg {
+               &:hover > svg > path {
                     fill: @color-base;
                }
 
@@ -356,10 +356,12 @@ nav {
                }
 
                & > svg {
-                    fill: @color-darkgray;
-
                     .size(height, @size-icon * 0.9);
                     .size(width, @size-icon * 0.9);
+
+                    & > path {
+                         fill: @color-darkgray;
+                    }
                }
 
                @media @query-desktop {
@@ -454,7 +456,6 @@ section {
                @size-logo-margin: -(@size-logo / 25);
 
                display: inline-block;
-               fill: @color-base;
 
                .size-non-desktop(height, @size-logo);
                .size-non-desktop(margin-bottom, @size-logo-margin);
@@ -464,6 +465,10 @@ section {
                     height: @size-logo * 2.5 * @multiplier-desktop;
                     margin-top: @size-base * 8;
                     width: @size-logo * 2.5 * @multiplier-desktop;
+               }
+
+               & > path {
+                    fill: @color-base;
                }
           }
 

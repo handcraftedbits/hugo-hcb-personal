@@ -2,9 +2,7 @@
 <header>
   <section id="name-and-info">
     {{ if (isset $resume.basics "picture") }}
-      <svg>
-        <use xlink:href="/image/sprites.svg#{{ $resume.basics.picture }}"></use>
-      </svg>
+    <svg src="{{ $resume.basics.picture }}"></svg>
     {{ end }}
     <div id="name-and-title">
       <h1>{{ $resume.basics.name | default "basics.name" }}</h1>
@@ -12,9 +10,7 @@
     </div>
     <div id="personal-info">
       <div id="address">
-        <svg>
-          <use xlink:href="/image/sprites.svg#home-icon"></use>
-        </svg>
+        <svg src="/image/home-icon.svg"></svg>
         <div>
           <p {{ if (eq $resume._meta.public true) }} class="redacted" {{ end }}>
             {{ $resume.basics.location.address | default "basics.location.address" | safeHTML }}
@@ -26,17 +22,13 @@
         </div>
       </div>
       <div id="phone">
-        <svg>
-          <use xlink:href="/image/sprites.svg#phone-icon"></use>
-        </svg>
+        <svg src="/image/phone-icon.svg"></svg>
         <p {{ if (eq $resume._meta.public true) }} class="redacted" {{ end }}>
           {{ $resume.basics.phone | default "basics.phone" | safeHTML }}
         </p>
       </div>
       <div id="email">
-        <svg>
-          <use xlink:href="/image/sprites.svg#email-icon"></use>
-        </svg>
+        <svg src="/image/email-icon.svg"></svg>
         <p>
           <a href="mailto:{{ $resume.basics.email }}">{{ $resume.basics.email | default "basics.email" }}</a>
         </p>
@@ -46,9 +38,7 @@
   <section id="sites">
     {{ if (isset $resume.basics "website") }}
       <div id="homepage">
-        <svg>
-          <use xlink:href="/image/sprites.svg#webpage-icon"></use>
-        </svg>
+        <svg src="/image/webpage-icon.svg"></svg>
         <p>
           <a href="{{ $resume.basics.website }}">
             {{ $resume.basics._websitePrettyLink | default $resume.basics.website }}
@@ -58,9 +48,7 @@
     {{ end }}
     {{ range $i, $profile := $resume.basics.profiles }}
       <div id="site-{{ $i }}">
-        <svg>
-          <use xlink:href="/image/sprites.svg#{{ $profile._icon }}"></use>
-        </svg>
+        <svg src="{{ $profile._icon }}"></svg>
         <p>
           <a href="{{ $profile.url | default (print "basics.profiles[" $i "].url") }}">
             {{ if (isset $profile "_prettyLink") }}
@@ -258,17 +246,13 @@
           <div class="ref-contact">
             <div>
               <div class="ref-email">
-                <svg>
-                  <use xlink:href="/image/sprites.svg#email-icon"></use>
-                </svg>
+                <svg src="/image/email-icon.svg"></svg>
                 <p {{ if (eq $resume._meta.public true) }} class="redacted" {{ end }}>
                   {{ $ref._email | default (print "references[" $i "]._email") | safeHTML }}
                 </p>
               </div>
               <div class="ref-phone">
-                <svg>
-                  <use xlink:href="/image/sprites.svg#phone-icon"></use>
-                </svg>
+                <svg src="/image/phone-icon.svg"></svg>
                 <p {{ if (eq $resume._meta.public true) }} class="redacted" {{ end }}>
                   {{ $ref._phone | default (print "references[" $i "]._phone") | safeHTML }}
                 </p>

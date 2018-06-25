@@ -7,7 +7,6 @@ var minify = require("gulp-minify");
 var nodePath = require("path");
 var rev = require("gulp-rev");
 var rimraf = require("rimraf");
-var svgSprite = require("gulp-svg-sprite");
 
 var resourcesDir = outputDir("src-static");
 var dataDir = outputDir("data");
@@ -23,6 +22,7 @@ var config = {
      dir: {
           output: {
                favicon: outputDir(buildDir("image/favicon")),
+               font: outputDir(buildDir("font")),
                image: outputDir(buildDir("image")),
                script: outputDir(buildDir("script")),
                style: outputDir(buildDir("style"))
@@ -75,7 +75,12 @@ gulp.task("concat-css", gulp.series("less-to-css", function() {
 
 gulp.task("copy-fonts", function() {
      return gulp.src(config.dir.resources.font("*"))
-          .pipe(gulp.dest(buildDir("font")));
+          .pipe(gulp.dest(config.dir.output.font()));
+});
+
+gulp.task("copy-images", function() {
+     return gulp.src(config.dir.resources.image("*.svg"))
+          .pipe(gulp.dest(config.dir.output.image()));
 });
 
 gulp.task("concat-js", function() {
@@ -85,7 +90,7 @@ gulp.task("concat-js", function() {
 
      return gulp.src(dependencies)
           .pipe(concat("all.js"))
-          .pipe(gulp.dest(buildDir("script")));
+          .pipe(gulp.dest(config.dir.output.script()));
 });
 
 gulp.task("create-favicons-apple", function() {
@@ -112,7 +117,7 @@ gulp.task("create-favicons-apple", function() {
 });
 
 gulp.task("create-favicons-normal", function() {
-     return gulp.src(config.dir.resources.image("logo.svg"))
+     return gulp.src(config.dir.resources.image("logo.svg.favicon"))
           .pipe(favicons({
                icons: {
                     android: false,
@@ -185,19 +190,6 @@ gulp.task("create-favicons-tile", gulp.parallel("create-favicons-tile-medium-wid
 
 gulp.task("create-favicons", gulp.parallel("create-favicons-normal", "create-favicons-apple", "create-favicons-tile"));
 
-gulp.task("create-svg-sprite", function() {
-     return gulp.src(config.dir.resources.image("*.svg"))
-          .pipe(svgSprite({
-               mode: {
-                    symbol: {
-                         dest: "",
-                         sprite: "sprites.svg"
-                    }
-               }
-          }))
-          .pipe(gulp.dest(config.dir.output.image()));
-});
-
 gulp.task("minify-css", gulp.series("concat-css", function() {
      return gulp.src([ config.dir.output.style("resume.css"), config.dir.output.style("style.css") ])
           .pipe(cleanCss({
@@ -230,7 +222,7 @@ gulp.task("minify-js", gulp.series("concat-js", function() {
           });
 }));
 
-gulp.task("default", gulp.series("clean", gulp.parallel("copy-fonts", "create-svg-sprite", "minify-css", "minify-js",
+gulp.task("default", gulp.series("clean", gulp.parallel("copy-fonts", "copy-images", "minify-css", "minify-js",
      "create-favicons")));
 
 gulp.task("dev", gulp.series("default", function() {
@@ -238,6 +230,6 @@ gulp.task("dev", gulp.series("default", function() {
           gulp.series("minify-css"));
      gulp.watch(config.dir.resources.font("*"), gulp.series("copy-fonts"));
      gulp.watch(bowerDir("**/*.js"), gulp.series("minify-js"));
-     gulp.watch(config.dir.resources.image("*.svg"), gulp.series("create-svg-sprite"));
+     gulp.watch(config.dir.resources.image("*.svg"), gulp.series("copy-images"));
 }));
 
