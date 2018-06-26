@@ -244,6 +244,8 @@ nav {
           & > a {
                @size-link: @size-base;
 
+               user-select: none;
+
                .size(font-size, @size-link);
 
                &:last-child::after {
@@ -441,6 +443,7 @@ section {
                color: @color-base;
                font-weight: bold;
                margin-bottom: 0;
+               user-select: none;
                white-space: nowrap;
 
                .size(font-size, @size-name);
@@ -488,8 +491,10 @@ section {
 
      &#prev-next {
           @size-margin-top: (@size-base * 5) / 3;
+
           display: flex;
-          
+          user-select: none;
+
           .size(font-size, @size-text);
           .size(margin-top, @size-margin-top);
 
