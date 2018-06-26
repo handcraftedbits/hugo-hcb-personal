@@ -37,6 +37,10 @@ a {
      font-weight: bold;
      text-decoration: none;
 
+     &.read-more {
+          user-select: none;
+     }
+
      &:hover {
           text-decoration: underline;
      }
@@ -575,8 +579,8 @@ section {
           .unselectable();
 
           & > a {
-               @size-tag: @size-base * 1.2;
-               @size-border: @size-tag / 3;
+               @size-tag: @size-base * 1.1;
+               @size-border: @size-tag / 4;
                @size-margin: @size-tag / 5;
                @size-padding: @size-tag / 4;
                @size-padding-bottom: @size-tag / 5;
@@ -590,7 +594,7 @@ section {
                white-space: nowrap;
 
                .size(border-radius, @size-border);
-               .size(font-size, @size-base);
+               .size(font-size, @size-base / 1.2);
                .size(margin-right, @size-margin);
 
                &:hover {

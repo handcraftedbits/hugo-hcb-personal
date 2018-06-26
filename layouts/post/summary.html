@@ -1,7 +1,7 @@
 {{ partial "header.post.html" . }}
   {{ .Summary }}
   <p>
-    <a href="{{ .Permalink }}">Read more...</a>
+    <a class="read-more" href="{{ .Permalink }}">Read more...</a>
   </p>
   {{ .Scratch.Set "isListing" true }}
 {{ partial "footer.post.html" . }}
