@@ -1,6 +1,8 @@
 <header class="pure-u-1 pure-u-lg-1-5">
   <section id="logo-and-name">
-    <svg src="/image/logo.svg"></svg>
+    <a href="/">
+      <svg src="/image/logo.svg"></svg>
+    </a>
     <h1>{{ .Site.Params.owner.name }}</h1>
   </section>
   <section id="links">
@@ -19,9 +21,9 @@
       </a>
     </nav>
     <nav role="navigation" id="main" aria-label="Pages">
-      <a href="{{ "/" | relURL }}">Home</a>
       <a href="{{ "/about" | relURL }}.html">About</a>
       <a href="{{ "/projects" | relURL }}.html">Projects</a>
+      <a href="{{ "/patents" | relURL }}.html">Patents</a>
     </nav>
   </section>
 </header>

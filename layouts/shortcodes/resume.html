@@ -183,23 +183,9 @@
   {{ if (isset $resume "_patents") }}
     <section id="patents">
       <h1>{{ $resume._meta.titles.patents | default "Patents" }}</h1>
-      {{ range $i, $patent := $resume._patents }}
-        <div id="patent-{{ $i }}" class="item-with-date {{ if (eq $patent._break true) }} pagebreak {{ end }}">
-          <div class="patent">
-            <p>
-              <a href="{{ $patent.url | default (print "_patents[" $i "].url") }}">
-                {{ $patent.country | default (print "_patents[" $i "].country") }} Patent
-                {{ $patent.number | default (print "_patents[" $i "].number") }}
-              </a>
-            </p>
-            <p>{{ $patent.name | default (print "_patents[" $i "].name") }}</p>
-            <p>{{ $patent.authors | default (print "_patents[" $i "].authors") }}</p>
-          </div>
-          <div>
-            <p>{{ $patent.issuedDate | default (print "_patents[" $i "].issuedDate") }}</p>
-          </div>
-        </div>
-      {{ end }}
+      <p>
+        {{ $resume._patents.summary | default "_patents.summary" | safeHTML }}
+      </p>
     </section>
   {{ end }}
 

@@ -104,10 +104,6 @@ div {
           & > div:first-child {
                flex-grow: 1;
 
-               & a {
-                    color: @color-base;
-               }
-
                & > p {
                     margin: 0;
                     padding-bottom: @size-padding-default / 3;
@@ -163,25 +159,6 @@ div {
 
      &.pagebreak {
           page-break-after: always;
-     }
-
-     &.patent {
-          & > p:nth-child(2) {
-               font-family: "BariolSerif";
-               font-style: italic;
-
-               &::after {
-                    content: "\201D";
-               }
-
-               &::before {
-                    content: "\201C";
-               }
-          }
-
-          & > p:last-child {
-               font-family: "BariolSerif";
-          }
      }
 
      &.publication {
@@ -383,10 +360,6 @@ main {
                width: 70%;
 
                .unselectable();
-          }
-
-          a {
-               color: @color-text;
           }
 
           & > div:last-child {

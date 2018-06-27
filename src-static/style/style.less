@@ -456,26 +456,35 @@ section {
                     padding-left: 0;
                     padding-top: @size-base * 0.3;
                }
+
+               @media @query-phone-portrait {
+                    display: none;
+               }
           }
 
-          & > svg {
-               @size-logo: @size-base * 2.5;
-               @size-logo-margin: -(@size-logo / 25);
+          & > a {
+               & > svg {
+                    @size-logo: @size-base * 2.5;
+                    @size-logo-margin: -(@size-logo / 25);
 
-               display: inline-block;
+                    display: inline-block;
 
-               .size-non-desktop(height, @size-logo);
-               .size-non-desktop(margin-bottom, @size-logo-margin);
-               .size-non-desktop(width, @size-logo);
+                    .size-non-desktop(height, @size-logo);
+                    .size-non-desktop(margin-bottom, @size-logo-margin);
+                    .size-non-desktop(width, @size-logo);
 
-               @media @query-desktop {
-                    height: @size-logo * 2.5 * @multiplier-desktop;
-                    margin-top: @size-base * 8;
-                    width: @size-logo * 2.5 * @multiplier-desktop;
+                    @media @query-desktop {
+                         height: @size-logo * 2.5 * @multiplier-desktop;
+                         width: @size-logo * 2.5 * @multiplier-desktop;
+                    }
+
+                    & > path {
+                         fill: @color-base;
+                    }
                }
 
-               & > path {
-                    fill: @color-base;
+               @media @query-desktop {
+                    margin-top: @size-base * 8;
                }
           }
 
