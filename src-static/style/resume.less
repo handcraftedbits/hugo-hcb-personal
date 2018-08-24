@@ -90,6 +90,13 @@ div {
                & > li {
                     padding-bottom: @size-padding-default / 3;
 
+                    &.pagebreak {
+                         height: 0;
+                         list-style-type: none;
+                         padding: 0;
+                         page-break-after: always;
+                    }
+
                     &:last-child {
                          padding-bottom: 0;
                     }

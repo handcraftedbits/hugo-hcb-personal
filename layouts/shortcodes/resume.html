@@ -135,7 +135,11 @@
             </p>
             <ul>
               {{ range $highlight := $exp.highlights }}
-                <li>{{ $highlight }}</li>
+                {{ if eq $highlight "_break" }}
+                  <li class="pagebreak"></li>
+                {{ else }}
+                  <li>{{ $highlight }}</li>
+                {{ end }}
               {{ end }}
             </ul>
           </div>
